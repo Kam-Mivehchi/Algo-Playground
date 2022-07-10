@@ -95,6 +95,31 @@ class undirectedGraph {
         return results
 
     }
+
+    bfsIterative(vertex) {
+        let queue = [vertex]
+        let result = []
+        let visited = {}
+        visited[vertex] = true
+
+        while (queue.length) {
+            let current = queue.shift()
+            result.push(current)
+            this.adjacencyList[current].forEach(neighbor => {
+                if (!visited[neighbor]) {
+                    queue.push(neighbor)
+                    visited[neighbor] = true
+                }
+            })
+
+
+        }
+        return result
+    }
+    bfsIterative(vertex, visited = {}, results = []) {
+
+
+    }
 }
 //      {
 //          dog: ['cat', 'mouse'],
@@ -130,5 +155,6 @@ graph.addEdge('E', 'F')
 console.log(graph.adjacencyList)
 console.log(graph.dfsRecursive('A'))
 console.log(graph.dfsIterative('A'))
+console.log(graph.bfsIterative('A'))
 // Depth First search
 
