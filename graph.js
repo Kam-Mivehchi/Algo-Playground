@@ -116,10 +116,7 @@ class undirectedGraph {
         }
         return result
     }
-    bfsIterative(vertex, visited = {}, results = []) {
 
-
-    }
 }
 //      {
 //          dog: ['cat', 'mouse'],
