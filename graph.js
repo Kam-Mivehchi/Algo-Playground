@@ -42,19 +42,58 @@ class undirectedGraph {
         return this.adjacencyList
     }
 
-    dfs(vertex, visited = {}, results = []) {
-        if (!vertex) return
+    dfsRecursive(vertex, visited = {}, results = []) {
+        if (!vertex) return null;
 
 
         results.push(vertex)
         visited[vertex] = true;
-        for (let i = 0; i < this.adjacencyList[vertex].length; i++) {
-            if (!visited[this.adjacencyList[vertex][i]]) {
-                this.dfs(this.adjacencyList[vertex][i], visited, results)
+        // for (let i = 0; i < this.adjacencyList[vertex].length; i++) {
+        //     if (!visited[this.adjacencyList[vertex][i]]) {
+        //         this.dfs(this.adjacencyList[vertex][i], visited, results)
+        //     }
+        // }
+        this.adjacencyList[vertex].forEach(neighbor => {
+            if (!visited[neighbor]) {
+                this.dfsRecursive(neighbor, visited, results)
             }
-        }
+        })
 
         return results
+    }
+
+    dfsIterative(vertex) {
+        let stack = []
+        let results = []
+        let visited = {}
+        let list = this.adjacencyList
+        stack.push(vertex)
+        visited[vertex] = true
+        while (stack.length) {
+            let current = stack.pop()
+            results.push(current)
+
+
+            list[current].forEach(neighbor => {
+                if (!visited[neighbor]) {
+
+                    visited[neighbor] = true
+                    stack.push(neighbor)
+                }
+            })
+            // if (!visited[current]) {
+            //     results.push(current)
+            //     visited[current] = true
+            //     list[current].forEach(neighbor => {
+
+
+            //         stack.push(neighbor)
+
+            //     })
+            // }
+        }
+        return results
+
     }
 }
 //      {
@@ -87,6 +126,9 @@ graph.addEdge('C', 'E')
 graph.addEdge('D', 'E')
 graph.addEdge('D', 'F')
 graph.addEdge('E', 'F')
+
 console.log(graph.adjacencyList)
+console.log(graph.dfsRecursive('A'))
+console.log(graph.dfsIterative('A'))
 // Depth First search
 
