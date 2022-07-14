@@ -83,3 +83,8 @@ function fib(number) {
     helper()
     return seq[seq.length - 1]
 }
+
+function fib2(n) {
+    if (n <= 2) return 1;
+    return fib(n - 1) + fib(n - 2);
+}
