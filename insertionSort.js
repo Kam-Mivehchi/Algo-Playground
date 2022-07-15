@@ -19,4 +19,23 @@ function insertionSort(arr) {
     }
     return arr;
 }
-insertionSort([2, 1, 9, 76, 4])
+console.log(insertionSort2([2, 1, 9, 76, 4]))
+
+function insertionSort2(arr) {
+
+    for (let i = 1; i < arr.length; i++) {
+        let curr = i;
+        let prev = i - 1
+        if (arr[curr] < arr[prev]) {
+
+
+            while (prev >= 0) {
+                if (arr[curr] > arr[prev]) break;
+                swap(arr, curr, prev)
+                curr = prev;
+                prev = curr - 1;
+            }
+        }
+    }
+    return arr;
+}

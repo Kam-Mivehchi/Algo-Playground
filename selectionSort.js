@@ -16,9 +16,9 @@ function selectionSort(arr) {
                 min = j
             }
         }
+
         swap(arr, i, min)
-        if (arr[i] !== min) {
-        }
+
         console.log(arr)
     }
 
