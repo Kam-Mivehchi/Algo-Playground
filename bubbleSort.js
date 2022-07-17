@@ -27,7 +27,7 @@ function bubbleSort(arr) {
 bubbleSort([37, 45, 29, 8])
 
 //optimized compare less each time through the loop
-
+//starts from the end
 function bubbleSort2(arr) {
     let count = 0
     for (let i = arr.length; i > 0; i--) {
